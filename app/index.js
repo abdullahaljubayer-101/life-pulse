@@ -1,27 +1,26 @@
 import { router } from "expo-router";
 import { View } from "react-native";
-import { Button, PaperProvider, Text } from "react-native-paper";
+import { Button, Text } from "react-native-paper";
 
-export default function App() {
+export default function Index() {
   return (
-    <PaperProvider>
-      <View className="flex-1 items-center justify-evenly bg-violet-100">
-        <View className="flex items-center justify-evenly space-y-4">
-          <Text variant="headlineLarge">LifePulse</Text>
-          <Text variant="titleSmall">
-            Best Lifestyle and Productivity application in the world
-          </Text>
-        </View>
-        <Button
-          uppercase
-          icon="arrow-right-bold-circle"
-          mode="contained"
-          contentStyle={{ flexDirection: "row-reverse" }}
-          onPress={() => router.push("/login")}
-        >
-          Get Started
-        </Button>
+    <View className="items-center flex-1 justify-evenly bg-violet-50">
+      <View className="flex items-center">
+        <Text className="text-gray-800" variant="displayLarge">
+          Life Pulse
+        </Text>
+        <Text className="text-gray-600" variant="bodyLarge">
+          A productivity and life style mobile application
+        </Text>
       </View>
-    </PaperProvider>
+      <Button
+        icon="arrow-right"
+        contentStyle={{ flexDirection: "row-reverse" }}
+        mode="contained-tonal"
+        onPress={() => router.push("/(home)")}
+      >
+        <Text variant="labelLarge">Get Started</Text>
+      </Button>
+    </View>
   );
 }

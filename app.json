@@ -2,7 +2,7 @@
   "expo": {
     "name": "LifePulse",
     "slug": "LifePulse",
-    "scheme": "Life style app",
+    "scheme": "life-style-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
