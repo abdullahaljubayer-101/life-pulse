@@ -40,6 +40,20 @@ export default function Layout() {
           ),
         }}
       />
+      <Drawer.Screen
+        name="logout"
+        options={{
+          headerTitle: "Logout",
+          drawerLabel: "Logout",
+          drawerIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="logout-variant"
+              size={24}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Drawer>
   );
 }

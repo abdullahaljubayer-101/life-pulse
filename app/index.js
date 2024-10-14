@@ -17,7 +17,8 @@ export default function Index() {
         icon="arrow-right"
         contentStyle={{ flexDirection: "row-reverse" }}
         mode="contained-tonal"
-        onPress={() => router.push("/(home)")}
+        // onPress={() => router.push("/(home)")}
+        onPress={() => router.push("/auth/login")}
       >
         <Text variant="labelLarge">Get Started</Text>
       </Button>

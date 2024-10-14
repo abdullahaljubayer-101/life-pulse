@@ -1,12 +1,14 @@
 import { View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { useForm, Controller } from "react-hook-form";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { ColorSchemeStore } from "nativewind/dist/style-sheet/color-scheme";
 
 export default function Login() {
   const {
     control,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -15,8 +17,25 @@ export default function Login() {
     },
   });
   const login = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log(data);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    try {
+      const res = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/login`, {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (res.ok) {
+        router.push("/(home)");
+      } else {
+        setError("root", {
+          message: result.msg,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -102,6 +121,13 @@ export default function Login() {
       >
         <Text variant="labelLarge">Login</Text>
       </Button>
+
+      {/* >root error */}
+      {errors.root && (
+        <Text className="text-red-700" variant="bodyMedium">
+          {errors.root.message}
+        </Text>
+      )}
 
       {/* >register link */}
       <Link href="/auth/register" className="underline ">
